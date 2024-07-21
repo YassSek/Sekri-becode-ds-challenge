@@ -1,0 +1,12 @@
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Environements
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/

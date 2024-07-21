@@ -1,0 +1,41 @@
+name: run script.py
+
+on:
+  schedule:
+    - cron: '0 */2 * * *'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: checkout repo content
+        uses: actions/checkout@v2 
+
+      - name: setup python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12.4'
+
+      - name: Install requirements
+        run: |
+          pip install -r requirements.txt
+          pip install requests
+          pip install pandas
+          pip install bs4
+
+
+      - name: execute py script
+        run: python script.py
+
+      - name: commit file
+        run : |
+          git config --local user.email "action@github.com"
+          git config --local user.name "Github Action"
+          git add -A
+          git diff-index --quiet HEAD || (git commit -a -m "updated logs" --allow-empty)
+
+      - name: push changes
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
