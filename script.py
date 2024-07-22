@@ -37,8 +37,9 @@ for tag in soup.find_all("article"):
 lien = ["https://www.rtbf.be"+ elem for elem in lien if "/article" in elem] # format les urls correctement
 print("liste des liens preparé")
 
-df = pd.DataFrame({"Title": titre}) # initie les colones avec les valeurs recupere sur la page d'acceuil
-df["Links"] = lien
+df = pd.DataFrame({"Title":[],"Links":[],"Article":[]}) # initie les colones avec les valeurs recupere sur la page d'acceuil
+df.loc[:,"Title"]= titre
+df.loc[:,"Links"] = lien
 
 fichier = open(save,"a+",encoding='utf-8') #save en format text pour comparaison avec csv
 for e in lien:
@@ -51,6 +52,6 @@ for e in lien:
     contenu.append(getcontenu(newcontent))
     fichier.write(contenu[lien.index(e)]+'\n')
 fichier.close()
-df["Article"] = contenu
+df.loc[:,"Article"] = contenu
 df.to_csv("./assets/prod.csv", index=False)
 print("scraping terminé , veuillez verifié le contenu :)")
