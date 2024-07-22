@@ -53,5 +53,5 @@ for e in lien:
     fichier.write(contenu[lien.index(e)]+'\n')
 fichier.close()
 df.loc[:,"Article"] = contenu
-df.to_csv("./assets/prod.csv", index=False)
+df.to_csv("./assets/prod.csv",index=False,mode='a',header=False)
 print("scraping terminé , veuillez verifié le contenu :)")
