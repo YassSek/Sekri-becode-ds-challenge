@@ -2,12 +2,10 @@ import re
 import pandas as pd
 import string
 import nltk
+#nltk.download("stopwords")
 from nltk.corpus import stopwords
-
 import numpy as np
 from transformers import CamembertModel, CamembertTokenizer ,CamembertConfig
-
-
 from sklearn.decomposition import PCA
 from sklearn.manifold import TSNE
 from sklearn.cluster import KMeans
@@ -87,8 +85,8 @@ scatter = plt.scatter(vis_embeddings[:, 0], vis_embeddings[:, 1], c=clusters, cm
 
 plt.colorbar(scatter, label='Cluster')
 plt.title("Visualisation des clusters de textes")
-plt.xlabel("Dimension 1")
-plt.ylabel("Dimension 2")
+plt.xlabel("X")
+plt.ylabel("Y")
 
 # Affichage des sujets principaux par cluster dans le terminale
 for cluster_id, texts in cluster_subjects.items():
@@ -99,4 +97,3 @@ for cluster_id, texts in cluster_subjects.items():
 
 # Affichage des cluster axe X et Y
 plt.show()
-
