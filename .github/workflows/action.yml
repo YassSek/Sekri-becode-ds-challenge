@@ -1,4 +1,4 @@
-name: run script.py
+name: run scrap.py
 
 on:
   schedule:
