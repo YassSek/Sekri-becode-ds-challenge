@@ -24,6 +24,7 @@ stop_words = stop_words_en + stop_words_fr
 
 dataset_path = "./assets/prod.csv"
 df = pd.read_csv(dataset_path)
+df = df.drop_duplicates(subset=['Title'])
 
 def process_text(value):
     try:
@@ -66,7 +67,7 @@ tsne = TSNE(n_components=2)
 vis_embeddings = tsne.fit_transform(reduced_embeddings)
 
 # Clustering avec K-Means
-n_clusters = 12
+n_clusters = 5
 kmeans = KMeans(n_clusters=n_clusters)
 clusters = kmeans.fit_predict(reduced_embeddings)
 
@@ -95,5 +96,5 @@ for cluster_id, texts in cluster_subjects.items():
         print(f" - {text}")
     print("\n")
 
-# Affichage des cluster axe X et Y
+# Affichage des cluster 
 plt.show()
