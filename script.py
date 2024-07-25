@@ -41,17 +41,13 @@ df = pd.DataFrame({"Title":[],"Links":[],"Article":[]}) # initie les colones ave
 df.loc[:,"Title"]= titre
 df.loc[:,"Links"] = lien
 
-fichier = open(save,"a+",encoding='utf-8') #save en format text pour comparaison avec csv
 for e in lien:
-    fichier.write(titre[lien.index(e)]+'\n') # ajoute titre et lien dans fichier txt
-    fichier.write(e+'\n')
     r = requests.get(e) #requete sur les different article recupere a l'acceuil
     if r.status_code == 200:
         print('recuperation du contenu suivant...')
     newcontent = BeautifulSoup(r.content,"html.parser")
     contenu.append(getcontenu(newcontent))
-    fichier.write(contenu[lien.index(e)]+'\n')
-fichier.close()
+
 df.loc[:,"Article"] = contenu
 df.to_csv("./assets/prod.csv",index=False,mode='a',header=False)
 print("scraping terminé , veuillez verifié le contenu :)")
