@@ -18,14 +18,13 @@ jobs:
 
       - name: Install requirements
         run: |
-          pip install -r requirements.txt
           pip install requests
           pip install pandas
           pip install bs4
 
 
-      - name: execute py script
-        run: python script.py
+      - name: execute py scrap
+        run: python scrap.py
 
       - name: commit file
         run : |
