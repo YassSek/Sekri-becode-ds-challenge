@@ -21,3 +21,5 @@ Using camemBERT model for analysing article values then creating cluster and vis
 Clone the repository and install the required dependencies ( in requierements.txt ) , run the scrap script first and then run the main.py
 
 if you clone this repository on github you could use sheduled scraping ( modify the yml file to change time of recurrence )
+
+![Clusters](./assets/text-clusters-visuals.png "Visualisation")
